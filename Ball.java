@@ -5,7 +5,7 @@ import java.util.Random;
 public class Ball {
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
-    private static final int HOLE_SIZE = 10;
+    private static final int HOLE_SIZE = 25;
     private int x = 0;
     private int y = 0;
     private int dx = 2;
