@@ -12,21 +12,25 @@ public class Ball {
     private int dy = 2;
     private Component canvas;
     private boolean isInHole = false;
+    private Color ballColor;
 
-    public Ball(Component c) {
+    public Ball(Component c, Color color) {
         this.canvas = c;
-        if (Math.random() < 0.5) {
-            x = new Random().nextInt(this.canvas.getWidth());
-            y = 0;
-        } else {
-            x = 0;
-            y = new Random().nextInt(this.canvas.getHeight());
-        }
+        ballColor = color;
+//        if (Math.random() < 0.5) {
+//            x = new Random().nextInt(this.canvas.getWidth());
+//            y = 0;
+//        } else {
+//            x = 0;
+//            y = new Random().nextInt(this.canvas.getHeight());
+//        }
+        x = canvas.getWidth() / 2;
+        y = canvas.getHeight() / 2;
     }
 
     public void draw(Graphics2D g2) {
         if (isInHole == false) {
-            g2.setColor(Color.darkGray);
+            g2.setColor(ballColor);
             g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
         }
     }
@@ -50,7 +54,7 @@ public class Ball {
             y = canvas.getHeight() - YSIZE;
             dy = -dy;
         }
-        isInHole = isHole();
+        // isInHole = isHole();
         this.canvas.repaint();
     }
 
