@@ -17,15 +17,15 @@ public class Ball {
     public Ball(Component c, Color color) {
         this.canvas = c;
         ballColor = color;
-//        if (Math.random() < 0.5) {
-//            x = new Random().nextInt(this.canvas.getWidth());
-//            y = 0;
-//        } else {
-//            x = 0;
-//            y = new Random().nextInt(this.canvas.getHeight());
-//        }
-        x = canvas.getWidth() / 2;
-        y = canvas.getHeight() / 2;
+        if (Math.random() < 0.5) {
+            x = new Random().nextInt(this.canvas.getWidth());
+            y = 0;
+        } else {
+            x = 0;
+            y = new Random().nextInt(this.canvas.getHeight());
+        }
+//        x = canvas.getWidth() / 2;
+//        y = canvas.getHeight() / 2;
     }
 
     public void draw(Graphics2D g2) {
@@ -54,7 +54,7 @@ public class Ball {
             y = canvas.getHeight() - YSIZE;
             dy = -dy;
         }
-        // isInHole = isHole();
+        isInHole = isHole();
         this.canvas.repaint();
     }
 
