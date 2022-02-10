@@ -19,11 +19,11 @@ public class Ball {
         this.canvas = c;
         ballColor = color;
         if (Math.random() < 0.5) {
-            x = new Random().nextInt(this.canvas.getWidth());
-            y = 0;
+            x = new Random().nextInt(this.canvas.getWidth() - 100);
+            y = 100;
         } else {
-            x = 0;
-            y = new Random().nextInt(this.canvas.getHeight());
+            x = 100;
+            y = new Random().nextInt(this.canvas.getHeight() - 100);
         }
 //        x = canvas.getWidth() / 2;
 //        y = canvas.getHeight() / 2;
