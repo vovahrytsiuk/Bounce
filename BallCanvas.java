@@ -14,6 +14,13 @@ public class BallCanvas extends JPanel{
         balls.add(b);
     }
 
+    public void joinBalls() {
+        for (int i = 0; i < balls.size(); i++) {
+            Ball b = balls.get(i);
+            b.set_isJoin(true);
+        }
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

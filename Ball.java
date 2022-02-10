@@ -13,6 +13,7 @@ public class Ball {
     private Component canvas;
     private boolean isInHole = false;
     private Color ballColor;
+    private boolean isJoined;
 
     public Ball(Component c, Color color) {
         this.canvas = c;
@@ -63,6 +64,14 @@ public class Ball {
                 (x < HOLE_SIZE && y > canvas.getHeight() - HOLE_SIZE) ||
                 (x > canvas.getWidth() - HOLE_SIZE && y < HOLE_SIZE) ||
                 (x > canvas.getWidth() - HOLE_SIZE && y > canvas.getHeight() - HOLE_SIZE);
+    }
+
+    public void set_isJoin(boolean joined) {
+        isJoined = joined;
+    }
+
+    public boolean get_isJoined() {
+        return isJoined;
     }
 
     public boolean getIsInHole() {

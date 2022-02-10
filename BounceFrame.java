@@ -27,12 +27,34 @@ public class BounceFrame extends JFrame{
 
         JButton buttonStart = new JButton("Start");
         JButton buttonStop = new JButton("Stop");
+        JButton buttonJoin = new JButton("Join");
+
+        buttonJoin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                canvas.joinBalls();
+            }
+        });
 
         buttonStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SpawnerThread spawner = new SpawnerThread(BALLS_COUNT, canvas);
-                spawner.start();
+                Ball redBall = new Ball(canvas, Color.red);
+                canvas.add(redBall);
+                BallThread redThread = new BallThread(redBall);
+                redThread.start();
+
+                Ball blueBall = new Ball(canvas, Color.blue);
+                canvas.add(blueBall);
+                BallThread blueThread = new BallThread(blueBall);
+                blueThread.setThreadToJoin(redThread);
+                blueThread.start();
+
+                Ball greenBall = new Ball(canvas, Color.green);
+                canvas.add(greenBall);
+                BallThread greenThread = new BallThread(greenBall);
+                greenThread.setThreadToJoin(redThread);
+                greenThread.start();
             }
         });
 
@@ -45,6 +67,7 @@ public class BounceFrame extends JFrame{
 
         buttonPatel.add(buttonStart);
         buttonPatel.add(buttonStop);
+        buttonPatel.add(buttonJoin);
 
         content.add(buttonPatel, BorderLayout.SOUTH);
     }
